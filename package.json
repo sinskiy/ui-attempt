@@ -1,6 +1,6 @@
 {
-  "name": "@sinskiy/ui-new",
-  "version": "0.2.0",
+  "name": "@sinskiy/ui",
+  "version": "0.1.0",
   "description": "A modern UI component library built with Tailwind and React. Expected to be used with tailwind-material-colors",
   "keywords": [
     "components",
@@ -14,6 +14,10 @@
     "name": "sinskiy",
     "email": "sinskiy@proton.me",
     "url": "https://github.com/sinskiy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinskiy/ui.git"
   },
   "type": "module",
   "main": "./lib/index.tsx",
