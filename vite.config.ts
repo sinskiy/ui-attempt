@@ -6,21 +6,22 @@ import dts from "vite-plugin-dts";
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
+    copyPublicDir: false,
     lib: {
       entry: resolve(__dirname, "lib/index.tsx"),
+      formats: ["es"],
       name: "sinskiy-ui",
       fileName: "sinskiy-ui",
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime"],
-      output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-          "react/jsx-runtime": "react/jsx-runtime",
-        },
-      },
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "clsx",
+        "tailwind-merge",
+      ],
     },
   },
-  plugins: [react(), dts({ rollupTypes: true })],
+  plugins: [react(), dts({ include: ["lib"], rollupTypes: true })],
 });
