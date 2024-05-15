@@ -1,6 +1,31 @@
 {
   "name": "@sinskiy/ui-new",
   "version": "0.0.0",
+  "description": "A modern UI component library built with Tailwind and React. Expected to be used with tailwind-material-colors",
+  "keywords": [
+    "components",
+    "ui",
+    "tailwindcss",
+    "react",
+    "tailwind-material-colors"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "sinskiy",
+    "email": "sinskiy@proton.me",
+    "url": "https://github.com/sinskiy"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/sinskiy-ui.umd.cjs",
+  "module": "./dist/sinskiy-ui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/sinskiy-ui.js",
+      "require": "./dist/sinskiy-ui.umd.cjs"
+    }
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
