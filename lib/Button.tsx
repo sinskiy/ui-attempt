@@ -1,5 +1,6 @@
 import { cn } from "./utils";
 import { ButtonHTMLAttributes, forwardRef } from "react";
+import "./Button.css";
 
 const buttonVariants = ["filled", "outlined", "ghost"] as const;
 const buttonSizes = ["default", "icon"] as const;
@@ -12,8 +13,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant, size = "default", children, className, ...props }, ref) => {
     const ghostBase =
-      "text-primary hocus-visible:text-on-primary before:interactive-bg-primary before:activatable-scale animated-hover";
-
+      "before:activatable-scale animated-hover text-primary before:interactive-bg-primary hover:text-on-primary focus-visible:text-on-primary";
     const variants = {
       filled: "interactive-bg-primary",
       outlined: `border-2 border-outline hover:border-primary ${ghostBase}`,
