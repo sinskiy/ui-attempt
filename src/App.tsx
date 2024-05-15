@@ -1,5 +1,7 @@
+import { Button } from "../lib";
+
 function App() {
-  return <></>;
+  return <Button>hello</Button>;
 }
 
 export default App;
