@@ -4,6 +4,7 @@ import { Checkbox } from "../lib";
 import { Input } from "../lib";
 import { Label } from "../lib";
 import { Kbd } from "../lib";
+import { CommandIcon } from "lucide-react";
 
 const buttons = buttonVariants.flatMap((variant) => (
   <div key={variant} className="flex gap-2">
@@ -48,7 +49,10 @@ function App() {
       <Input placeholder="hello" disabled />
       <Textarea placeholder="hello" />
       <Textarea placeholder="hello" disabled />
-      <Kbd>ctrl + s</Kbd>
+      <Kbd>
+        <CommandIcon />
+        <span>s</span>
+      </Kbd>
     </div>
   );
 }
