@@ -1,8 +1,8 @@
 import { Button, buttonVariants, buttonSizes } from "../lib";
 import { CogIcon } from "lucide-react";
-import { Checkbox } from "../lib/Checkbox";
-import { Input } from "../lib/Input";
-import { Label } from "../lib/Label";
+import { Checkbox } from "../lib";
+import { Input } from "../lib";
+import { Label } from "../lib";
 
 const buttons = buttonVariants.flatMap((variant) => (
   <div key={variant} className="flex gap-2">
