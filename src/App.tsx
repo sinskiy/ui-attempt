@@ -1,5 +1,5 @@
 import { Button, buttonVariants, buttonSizes, Textarea } from "../lib";
-import { CogIcon } from "lucide-react";
+import { CogIcon, SearchIcon } from "lucide-react";
 import { Checkbox } from "../lib";
 import { Input } from "../lib";
 import { Label } from "../lib";
@@ -47,6 +47,12 @@ function App() {
       </Label>
       <Input placeholder="hello" />
       <Input placeholder="hello" disabled />
+      <Input placeholder="hello">
+        <SearchIcon />
+      </Input>
+      <Input placeholder="hello" disabled>
+        <SearchIcon />
+      </Input>
       <Textarea placeholder="hello" />
       <Textarea placeholder="hello" disabled />
       <Kbd>
