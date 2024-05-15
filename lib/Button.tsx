@@ -1,18 +1,46 @@
-import { ButtonHTMLAttributes } from "react";
 import { cn } from "./utils";
+import { ButtonHTMLAttributes, forwardRef } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+const buttonVariants = ["filled", "outlined", "ghost"] as const;
+const buttonSizes = ["default", "icon"] as const;
 
-export const Button = ({ className, children, ...props }: ButtonProps) => {
-  return (
-    <button
-      className={cn(
-        "px-6 py-3 bg-emerald-400 rounded-full hover:bg-emerald-300 active:scale-95 transition-all",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: (typeof buttonVariants)[number];
+  size?: (typeof buttonSizes)[number];
+}
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant, size = "default", children, className, ...props }, ref) => {
+    const ghostBase =
+      "text-primary hocus-visible:text-on-primary before:interactive-bg-primary before:activatable-scale animated-hover";
+
+    const variants = {
+      filled: "interactive-bg-primary",
+      outlined: `border-2 border-outline hover:border-primary ${ghostBase}`,
+      ghost: ghostBase,
+    } as const;
+
+    const sizes = {
+      default: "h-12 px-6 [&>svg]:size-4",
+      icon: "size-12 [&>svg]:size-5",
+    } as const;
+
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-main font-medium transition-activatable active:scale-95 disabled:pointer-events-none disabled:opacity-50",
+          variant && variants[variant],
+          sizes[size],
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants, buttonSizes };
