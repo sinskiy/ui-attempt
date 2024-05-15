@@ -16,17 +16,16 @@
     "url": "https://github.com/sinskiy"
   },
   "type": "module",
-  "main": "./dist/sinskiy-ui.js",
-  "types": "./dist/sinskiy-ui.d.ts",
+  "main": "./lib/index.tsx",
   "files": [
-    "dist"
+    "lib"
   ],
   "exports": {
-    ".": "./dist/sinskiy-ui.js"
+    ".": "./lib/index.tsx",
+    "./tailwindTheme": "./lib/tailwindTheme.tsx"
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "rm -rf dist",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",

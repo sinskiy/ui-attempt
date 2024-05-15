@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 import { withMaterialColors } from "tailwind-material-colors";
-import { tailwindTheme } from "./lib/theme";
+import { tailwindTheme } from "./lib/tailwindTheme";
 
 const config: Config = {
   content: ["./index.html", "./lib/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],

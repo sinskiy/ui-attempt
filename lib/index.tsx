@@ -1,5 +1,3 @@
-import "./index.css";
-
 export * from "./Button";
-export * from "./theme";
+export * from "./tailwindTheme";
 export * from "./utils";
