@@ -11,7 +11,7 @@ export default defineConfig({
       fileName: "sinskiy-ui",
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react-dom/jsx-runtime"],
+      external: ["react", "react-dom", "react/jsx-runtime"],
       output: {
         globals: {
           react: "React",
