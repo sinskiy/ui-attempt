@@ -1,11 +1,50 @@
-import { Button } from "../lib";
+import { Button, buttonVariants, buttonSizes } from "../lib";
+import { CogIcon } from "lucide-react";
+import { Checkbox } from "../lib/Checkbox";
+import { Input } from "../lib/Input";
+import { Label } from "../lib/Label";
+
+const buttons = buttonVariants.flatMap((variant) => (
+  <div key={variant} className="flex gap-2">
+    {buttonSizes.map((size) => (
+      <>
+        {size === "default" && (
+          <>
+            <Button variant={variant}>
+              <CogIcon />
+              hello
+            </Button>
+            <Button variant={variant} disabled>
+              <CogIcon />
+              hello
+            </Button>
+          </>
+        )}
+        <Button variant={variant} size={size}>
+          {size === "icon" ? <CogIcon /> : "hello"}
+        </Button>
+        <Button variant={variant} size={size} disabled>
+          {size === "icon" ? <CogIcon /> : "hello"}
+        </Button>
+      </>
+    ))}
+  </div>
+));
 
 function App() {
   return (
-    <div>
-      <Button variant="filled">hello</Button>
-      <Button variant="ghost">hello</Button>
-      <Button variant="outlined">hello</Button>
+    <div className="flex flex-col gap-4">
+      {buttons}
+      <Label>
+        <Checkbox />
+        hello
+      </Label>
+      <Label>
+        <Checkbox disabled />
+        hello
+      </Label>
+      <Input placeholder="hello" />
+      <Input placeholder="hello" disabled />
     </div>
   );
 }
