@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import { withMaterialColors } from "tailwind-material-colors";
 import { tailwindTheme } from "./lib/tailwindTheme";
+import { tailwindPlugin } from "./lib/tailwindPlugin";
 
 const config: Config = {
   content: ["./index.html", "./lib/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
@@ -9,7 +10,7 @@ const config: Config = {
       ...tailwindTheme,
     },
   },
-  plugins: [],
+  plugins: [tailwindPlugin],
 };
 
 export default withMaterialColors(config, { primary: "#445942" }, {

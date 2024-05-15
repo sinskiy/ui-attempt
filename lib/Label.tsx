@@ -8,7 +8,7 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>(
     <label
       ref={ref}
       className={cn(
-        "flex items-center gap-3 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-70",
+        "for-disabled:cursor-not-allowed for-disabled:opacity-70 flex items-center gap-3 font-medium leading-none",
         className,
       )}
       {...props}

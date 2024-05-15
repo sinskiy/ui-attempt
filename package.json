@@ -22,7 +22,8 @@
   ],
   "exports": {
     ".": "./lib/index.tsx",
-    "./tailwindTheme": "./lib/tailwindTheme.tsx"
+    "./tailwindTheme": "./lib/tailwindTheme.ts",
+    "./tailwindPlugin": "./lib/tailwindPlugin.ts"
   },
   "scripts": {
     "dev": "vite",
