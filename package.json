@@ -15,18 +15,15 @@
     "email": "sinskiy@proton.me",
     "url": "https://github.com/sinskiy"
   },
+  "type": "module",
+  "main": "./dist/sinskiy-ui.js",
+  "types": "./dist/sinskiy-ui.d.ts",
   "files": [
     "dist"
   ],
-  "main": "./dist/sinskiy-ui.umd.cjs",
-  "module": "./dist/sinskiy-ui.js",
   "exports": {
-    ".": {
-      "import": "./dist/sinskiy-ui.js",
-      "require": "./dist/sinskiy-ui.umd.cjs"
-    }
+    ".": "./dist/sinskiy-ui.js"
   },
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "prebuild": "rm -rf dist",
@@ -35,11 +32,10 @@
     "preview": "vite preview",
     "prepublish": "pnpm build"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@types/node": "^20.12.12",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
