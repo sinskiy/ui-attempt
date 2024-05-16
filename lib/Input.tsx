@@ -9,7 +9,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className="relative">
         <div
           aria-hidden="true"
-          className="peer absolute bottom-0 left-4 top-0 mr-auto flex items-center text-on-surface-variant/30 [&>svg]:size-6"
+          className="peer pointer-events-none absolute bottom-0 left-4 top-0 mr-auto flex items-center text-on-surface-variant/30 [&>svg]:size-6"
         >
           {children}
         </div>
