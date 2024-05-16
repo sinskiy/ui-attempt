@@ -1,0 +1,17 @@
+.indicator {
+  position: relative;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  inset: 0.25rem 0;
+  width: var(--width, 33.333333%);
+  translate: var(--left, 0px) 0;
+  transform-origin: left;
+  transition:
+    scale 200ms,
+    translate 200ms;
+  background-color: rgb(var(--color-surface-container-high) / 1);
+}

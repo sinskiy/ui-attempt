@@ -5,6 +5,7 @@ import { Input } from "../lib";
 import { Label } from "../lib";
 import { Kbd } from "../lib";
 import { CommandIcon } from "lucide-react";
+import { Tabs } from "../lib/Tabs";
 
 const buttons = buttonVariants.flatMap((variant) => (
   <div key={variant} className="flex gap-2">
@@ -59,6 +60,7 @@ function App() {
         <CommandIcon />
         <span>s</span>
       </Kbd>
+      <Tabs name="tabs" tabs={["hello", "world", "!"]}></Tabs>
     </div>
   );
 }

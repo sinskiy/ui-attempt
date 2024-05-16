@@ -3,6 +3,7 @@
 }
 
 .animated-hover::before {
+  content: "";
   position: absolute;
   z-index: -10;
   border-radius: 9999px;
