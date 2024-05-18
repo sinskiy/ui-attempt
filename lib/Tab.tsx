@@ -13,7 +13,7 @@ const Tab = forwardRef<HTMLInputElement, TabProps>(
       <Label
         role="tab"
         className={cn(
-          "relative flex w-full justify-center rounded-full py-3 capitalize",
+          "group relative flex w-full justify-center rounded-full py-3 capitalize",
           className,
         )}
       >
@@ -25,7 +25,9 @@ const Tab = forwardRef<HTMLInputElement, TabProps>(
           name={name}
           {...props}
         />
-        <span className="opacity-50 peer-checked:opacity-100">{children}</span>
+        <span className="opacity-50 transition-opacity group-hover:opacity-100 peer-checked:text-primary peer-checked:opacity-100">
+          {children}
+        </span>
       </Label>
     );
   },
