@@ -12,6 +12,7 @@
   transform-origin: left;
   transition:
     scale 200ms,
+    width 200ms,
     translate 200ms;
   background-color: rgb(var(--color-surface-container-high) / 1);
 }

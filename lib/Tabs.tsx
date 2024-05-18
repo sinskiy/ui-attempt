@@ -2,6 +2,7 @@ import { Tab } from "./Tab";
 import { cn } from "./utils";
 import {
   ChangeEvent,
+  MouseEvent,
   HTMLAttributes,
   forwardRef,
   useEffect,
@@ -19,37 +20,78 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
   ({ className, tabs, name, ...props }) => {
     const tabsRef = useRef<HTMLDivElement>(null);
 
-    useEffect(
-      () =>
-        tabsRef.current?.style.setProperty(
-          "--width",
-          `${tabsRef.current?.children[0].clientWidth}px`,
-        ),
-      [],
-    );
+    useEffect(() => {
+      selectFirstTab(tabs);
 
-    const [selected, setSelected] = useState(tabs[0]);
+      if (selected) {
+        setTabWidth(selected.clientWidth);
+      }
+    }, []);
+
+    const [selected, setSelected] = useState<HTMLInputElement | null>(null);
 
     function moveIndicator(e: ChangeEvent<HTMLInputElement>) {
-      const newSelected = e.target;
+      const newSelected = e.currentTarget;
       if (newSelected.checked) {
-        const newSelectedID = newSelected.id;
-        setSelected(newSelectedID);
+        setSelected(newSelected);
 
-        const { clientWidth, offsetLeft } =
-          newSelected.parentElement as HTMLElement;
-
-        tabsRef.current?.style.setProperty("--width", `${clientWidth}px`);
-        tabsRef.current?.style.setProperty("--left", `${offsetLeft}px`);
+        setTabWidth(newSelected.clientWidth);
+        setTabLeft(newSelected.parentElement!.offsetLeft);
       }
+    }
+
+    function tabHoverHandle(
+      e: MouseEvent<HTMLInputElement>,
+      type: "enter" | "leave",
+    ) {
+      const { clientWidth, id } = e.currentTarget;
+
+      const selectedElementHovered = id === selected?.id;
+
+      if (!clientWidth || selectedElementHovered) return;
+
+      setTabWidth(type === "enter" ? clientWidth + 20 : clientWidth);
+
+      if (selected?.parentElement && firstTabComesBefore(id, selected.id)) {
+        const { offsetLeft } = selected.parentElement;
+        setTabLeft(type === "enter" ? offsetLeft - 20 : offsetLeft);
+      }
+    }
+
+    function selectFirstTab(tabs: string[]) {
+      const firstTabElement = document.getElementById(
+        tabs[0],
+      ) as HTMLInputElement;
+
+      if (firstTabElement) {
+        setSelected(firstTabElement);
+      }
+    }
+
+    function firstTabComesBefore(firstID: string, secondID: string) {
+      return tabs.indexOf(firstID) < tabs.indexOf(secondID);
+    }
+
+    function setTabWidth(width: number) {
+      setTabProperty("width", `${width}px`);
+    }
+
+    function setTabLeft(offsetLeft: number) {
+      setTabProperty("left", `${offsetLeft}px`);
+    }
+
+    function setTabProperty(property: string, propertyValue: string) {
+      tabsRef.current?.style.setProperty(`--${property}`, propertyValue);
     }
 
     const tabsList = tabs.map((tab) => (
       <Tab
         id={tab}
         name={name}
-        checked={selected === tab}
+        checked={selected?.id === tab}
         onChange={moveIndicator}
+        onMouseEnter={(e) => tabHoverHandle(e, "enter")}
+        onMouseLeave={(e) => tabHoverHandle(e, "leave")}
       >
         {tab}
       </Tab>
