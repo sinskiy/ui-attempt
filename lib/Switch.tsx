@@ -16,13 +16,13 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         <div
           aria-hidden="true"
           className={cn(
-            "bg-surface-container-highest pointer-events-none flex h-8 w-14 items-center rounded-full border-2 border-outline peer-checked:bg-primary peer-checked:border-primary",
+            "bg-surface-container-highest pointer-events-none flex h-8 w-14 items-center rounded-full border-2 border-outline transition-colors peer-checked:bg-primary peer-checked:border-primary",
             className,
           )}
         ></div>
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 left-1.5 my-auto aspect-square size-4 rounded-full bg-outline transition-all peer-checked:size-5 peer-checked:translate-x-6 peer-checked:bg-on-primary peer-active:w-6 peer-checked:peer-active:translate-x-5"
+          className="pointer-events-none absolute inset-0 left-1.5 my-auto aspect-square size-4 rounded-full bg-outline transition-[background-color,transform,width,height] duration-300 peer-checked:size-5 peer-checked:translate-x-6 peer-checked:bg-on-primary peer-active:w-6 peer-checked:peer-active:translate-x-5"
         >
           {children}
         </div>
