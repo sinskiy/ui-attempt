@@ -62,7 +62,14 @@ function App() {
         <span>s</span>
       </Kbd>
       <Tabs name="tabs" tabs={["hello", "world", "!"]} />
-      <Switch />
+      <Label>
+        <Switch />
+        Airplane
+      </Label>
+      <Label disabledType="pointer-events">
+        <Switch disabled />
+        Airplane
+      </Label>
     </div>
   );
 }

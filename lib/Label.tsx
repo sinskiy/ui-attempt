@@ -1,18 +1,26 @@
 import { cn } from "./utils";
 import { HTMLAttributes, forwardRef } from "react";
 
-export interface LabelProps extends HTMLAttributes<HTMLLabelElement> {}
+export interface LabelProps extends HTMLAttributes<HTMLLabelElement> {
+  disabledType?: "pointer-events" | "cursor";
+}
 
 const Label = forwardRef<HTMLLabelElement, LabelProps>(
-  ({ className, ...props }, ref) => (
+  ({ disabledType = "cursor", className, children, ...props }, ref) => (
     <label
       ref={ref}
       className={cn(
-        "for-disabled:cursor-not-allowed for-disabled:opacity-70 flex items-center gap-3 font-medium leading-none",
+        "group flex items-center gap-3 font-medium leading-none for-disabled:opacity-70",
+        {
+          "for-disabled:cursor-not-allowed": disabledType === "cursor",
+          "for-disabled:pointer-events-none": disabledType === "pointer-events",
+        },
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </label>
   ),
 );
 Label.displayName = "Label";
