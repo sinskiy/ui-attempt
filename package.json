@@ -1,6 +1,6 @@
 {
   "name": "@sinskiy/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A modern UI component library built with Tailwind and React. Expected to be used with tailwind-material-colors",
   "keywords": [
     "components",
